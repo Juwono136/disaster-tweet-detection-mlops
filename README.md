@@ -1,4 +1,10 @@
-# Disaster Tweet Detection
+# End-to-end Machine Learning Project - Disaster Tweet Detection
+
+![mlops-disaster-tweet-detection](https://github.com/Juwono136/disaster-tweet-detection-mlops/assets/70443393/7581cf3b-4f5c-43a7-b3e6-b42f7f75cfba)
+
+
+*You can see and run `testing.ipynb` file for testing and make prediction request to model serving.* 😎🙃👍
+
 
 |                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12,3 +18,72 @@
 | Deployment options         | In this project, the deployment option used is to use one of the cloud platforms called [Railway](https://railway.app/). Railway is a cloud Platform-as-a-Service (PaaS) that can be used to deploy an application and supports various programming languages ​​including Python. The trained and created model is then stored in a folder named serving_model through the pipeline orchestration process. First, a docker image is created to hold the TF-Serving model, then the deployment process is carried out using the Railway platform. This model can later be accessed via HTTP Request to perform testing and prediction requests.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | Web app                 | Here is the web app link used to access the serving model: [mlops-disaster-tweets](https://mlops-disaster-tweets-production.up.railway.app/v1/models/tweets-model/metadata)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | Monitoring              | For model serving monitoring, a platform called [Prometheus](https://prometheus.io/) is used to view metrics from the running model and [Grafana](https://grafana.com/) as an open-source platform to visualize model metrics captured by Prometheus and display them in the form of an attractive interactive dashboard. There are several metrics that can be displayed by typing the available PromQL commands, in this project the metrics displayed on the Grafana dashboard are Runtime Latency Sum, Request Count, and Request Latency Bucket. Runtime Latency Sum to provide an overview of how fast or slow the model responds to requests, Request Count to show how many requests are received by the model or provide an overview of the workload level or model popularity, and Request Latency Bucket to provide detailed insights into the distribution of the model request response time.                                                                                                                                                                                                                                                                                                                                                                                                          |
+
+-----------------------
+
+### 🧑‍💻 Technologies:
+- ➡️ Python 3.9.x
+- ➡️ TFX (TensorFlow Extended)
+- ➡️ TensorFlow
+- ➡️ Apache Beam
+- ➡️ Railway (https://railway.app/)
+- ➡️ Prometheus
+- ➡️ Grafana
+
+
+### 🖥️ Requirements:
+- ➡️ Python 3.9.15
+- ➡️ Conda
+- ➡️ [Docker](https://www.docker.com/products/docker-desktop/)
+- ➡️ tfx 1.11.0
+
+
+### 🛠️ Installation and setup:
+- Create virtual environment using Anaconda prompt:
+```
+conda update conda
+conda create --name <env_name> python==3.9.15
+```
+
+- Install package using `pip`:
+```
+pip --default-timeout=5000 --use-deprecated=legacy-resolver install -r requirements.txt
+```
+
+- Create TF-Serving in docker image:
+```
+docker build -t disaster-tweet-tf-serving .
+```
+
+- Run docker image locally:
+```
+docker run -p 8080:8501 disaster-tweet-tf-serving
+```
+
+- Install grafana:
+  - **Windows**: https://grafana.com/docs/grafana/latest/setup-grafana/installation/windows/
+  - **Debian or Ubuntu**: https://grafana.com/docs/grafana/latest/setup-grafana/installation/debian/
+
+### 🤝 Project Members
+- Juwono
+
+### 📸 Screenshot application
+- Model plot:
+
+![model_plot](https://github.com/Juwono136/disaster-tweet-detection-mlops/assets/70443393/53234203-6995-4f76-bf84-74ef66173c0a)
+
+
+- Metadata deployment file:
+
+![tweet-deployment](https://github.com/Juwono136/disaster-tweet-detection-mlops/assets/70443393/9c17db9f-1bda-491d-83be-67c8ff5cbfab)
+
+
+- Prometheus dashboard:
+
+![tweet-monitoring](https://github.com/Juwono136/disaster-tweet-detection-mlops/assets/70443393/a6a2c0f3-c859-4520-a0c8-f9efb1507349)
+
+
+- Grafana dashboard:
+
+![tweet-grafana-dashboard](https://github.com/Juwono136/disaster-tweet-detection-mlops/assets/70443393/cb0bb33b-4b0d-4fd4-abea-202da133012e)
+
